@@ -173,9 +173,9 @@ void CMyMacroDlg::OnBnClickedOk()
 	mHBtn.GetWindowTextW(str);
 	Hcon = (HWND)wcstol(str, NULL, 16);
 	
+
 	SendMessageA(Hwnd, WM_SETTEXT, 100, (WPARAM)"Test");
 	SendMessageA(Hcon, BM_CLICK, 0, 0);
-	//SendMessageA(Hcon, BM_CLICK, 0, 0);
 }
 
 
