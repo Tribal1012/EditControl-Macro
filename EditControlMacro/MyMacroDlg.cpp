@@ -3,15 +3,9 @@
 //
 
 #include "stdafx.h"
-#include <boost/log/core.hpp>
-#include <boost/log/trivial.hpp>
-#include <boost/log/expressions.hpp>
-#include <boost/log/utility/setup/file.hpp>
 #include "EditControlMacro.h"
 #include "MyMacroDlg.h"
 #include "afxdialogex.h"
-#include "randomstr.h"
-#include <iomanip>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -171,7 +165,6 @@ void CMyMacroDlg::OnBnClickedOk()
 	CString str;
 	HWND Hwnd = 0;
 	HWND Hcon = 0;
-	char buf[65536] = { 0, };
 
 	// Get Windows Handle from Window_Edit EditControl
 	mHEdit.GetWindowTextW(str);
@@ -180,36 +173,9 @@ void CMyMacroDlg::OnBnClickedOk()
 	mHBtn.GetWindowTextW(str);
 	Hcon = (HWND)wcstol(str, NULL, 16);
 	
-	if (Hwnd == 0 || Hcon == 0) return;
 
-	// use boost::log for Logging
-	boost::log::add_file_log
-	(
-		boost::log::keywords::file_name = "OppaGo_TV_%N.log",
-		boost::log::keywords::rotation_size = 10 * 1024 * 1024,
-		boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0),
-		boost::log::keywords::format = "[%TimeStamp%]: %Message%"
-		//(			
-		//	boost::log::expressions::stream
-		//	<< std::hex << std::setw(8) << std::setfill('0')
-		//	<< boost::log::expressions::attr< unsigned int >("LineID")
-		//	<< "\t"
-		//	<< boost::log::expressions::format_date_time<boost::posix_time::ptime>("TimeStamp","%Y-%m-%d %H:%M:%S.%f")
-		//	<< "\t:\t[" << boost::log::expressions::smessage
-		//	<< "]"
-		//)
-	);
-	boost::log::core::get()->set_filter(boost::log::trivial::severity >= boost::log::trivial::info);
-
-	GenRandomString((uint8*)buf, 65535);
-	SendMessageA(Hwnd, WM_SETTEXT, 65535, (WPARAM)buf);
+	SendMessageA(Hwnd, WM_SETTEXT, 100, (WPARAM)"Test");
 	SendMessageA(Hcon, BM_CLICK, 0, 0);
-	//SendMessageA(Hcon, WM_LBUTTONDOWN, 0, 1);
-	//SendMessageA(Hcon, WM_LBUTTONUP, 0, 1);
-	//SendMessageA((HWND)0x804ba, WM_COMMAND, NULL, MAKELONG(Hcon, BN_CLICKED));
-
-	// Logging
-	BOOST_LOG_TRIVIAL(info) << buf;
 }
 
 
