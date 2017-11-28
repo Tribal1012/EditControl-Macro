@@ -6,6 +6,7 @@
 #include "EditControlMacro.h"
 #include "MyMacroDlg.h"
 #include "afxdialogex.h"
+#include "randomstr.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -165,6 +166,7 @@ void CMyMacroDlg::OnBnClickedOk()
 	CString str;
 	HWND Hwnd = 0;
 	HWND Hcon = 0;
+	char buf[65536] = { 0, };
 
 	// Get Windows Handle from Window_Edit EditControl
 	mHEdit.GetWindowTextW(str);
@@ -173,9 +175,12 @@ void CMyMacroDlg::OnBnClickedOk()
 	mHBtn.GetWindowTextW(str);
 	Hcon = (HWND)wcstol(str, NULL, 16);
 	
-
-	SendMessageA(Hwnd, WM_SETTEXT, 100, (WPARAM)"Test");
+	GenRandomString((uint8*)buf, 65535);
+	SendMessageA(Hwnd, WM_SETTEXT, 65535, (WPARAM)buf);
 	SendMessageA(Hcon, BM_CLICK, 0, 0);
+	//SendMessageA(Hcon, WM_LBUTTONDOWN, 0, 1);
+	//SendMessageA(Hcon, WM_LBUTTONUP, 0, 1);
+	//SendMessageA((HWND)0x804ba, WM_COMMAND, NULL, MAKELONG(Hcon, BN_CLICKED));
 }
 
 

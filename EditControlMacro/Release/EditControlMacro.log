@@ -1,11 +1,8 @@
-﻿  randomstr.cpp
-randomstr.cpp(22): warning C4101: 'e' :참조되지 않은 지역 변수입니다.
-randomstr.cpp(40): warning C4101: 'e' :참조되지 않은 지역 변수입니다.
-randomstr.cpp(58): warning C4101: 'e' :참조되지 않은 지역 변수입니다.
+﻿  MyMacroDlg.cpp
   코드를 생성하고 있습니다.
-  0 of 195 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  2 of 313 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
-  EditControlMacro.vcxproj -> C:\Users\Tribal\documents\visual studio 2015\Projects\InputAndSpy\Release\EditControlMacro.exe
-  EditControlMacro.vcxproj -> C:\Users\Tribal\documents\visual studio 2015\Projects\InputAndSpy\Release\EditControlMacro.pdb (Full PDB)
+  EditControlMacro.vcxproj -> C:\Users\Tribal\Desktop\temp\EditControl-Macro\Release\EditControlMacro.exe
+  EditControlMacro.vcxproj -> C:\Users\Tribal\Desktop\temp\EditControl-Macro\Release\EditControlMacro.pdb (Full PDB)
